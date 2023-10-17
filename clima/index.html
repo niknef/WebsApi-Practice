@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''">
+        <main>
+          <div class="search-box">
+            <input 
+              type="text" 
+              class="search-bar" 
+              placeholder="Search..."
+              v-model="query"
+              @keypress="fetchWeather"
+            />
+          </div>
+    
+          <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
+            <div class="location-box">
+              <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
+              <div class="date">{{ dateBuilder() }}</div>
+            </div>
+    
+            <div class="weather-box">
+              <div class="temp">{{ Math.round(weather.main.temp) }}°c</div>
+              <div class="weather">{{ weather.weather[0].main }}</div>
+            </div>
+          </div>
+        </main>
+      </div>
+    <script src="main.js"></script>
+    
+</body>
+</html>

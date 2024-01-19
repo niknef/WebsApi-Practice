@@ -1,1 +1,1 @@
-# clima2
+# Pokedex y Clima app 
